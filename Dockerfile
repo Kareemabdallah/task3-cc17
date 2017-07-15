@@ -37,7 +37,11 @@ EXPOSE 80
 
 # Define environment variable
 ENV NAME CC_BACKEND_SERVERS
+ENV Name etc/hostname/hypervisor_etc/
+
+VOLUME ["var//hypervisor_etc/"]
 
 # Set the default command to execute
 # when creating a new container
 CMD service nginx start
+CMD ["fix-nginx-conf.sh","nginx.conf"]
